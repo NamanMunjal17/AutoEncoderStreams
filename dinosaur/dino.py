@@ -16,7 +16,9 @@ lastFrame=time()
 fps=5
 ii=0
 
-while True:
+run=True
+
+while run:
     if keyboard.is_pressed("w"):
         if not jump:
             jump_init=time()
@@ -42,8 +44,11 @@ while True:
         for i in obstacles:
             data[i[1]*20:(i[1]*20)+20,i[0]*20:(i[0]*20)+20]=[0,0,255]
             i[0]-=1
-        img=Image.fromarray(data)
-        img.save(f'{ii}.png')
+            if i==dino:
+                print("GAME OVER!!!")
+                run=False
+        #img=Image.fromarray(data)
+        #img.save(f'{ii}.png')
         ii+=1
         data=cv2.cvtColor(data,cv2.COLOR_BGR2RGB)
         cv2.imshow("Game",data)
