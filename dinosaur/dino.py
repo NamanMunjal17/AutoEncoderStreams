@@ -45,6 +45,7 @@ while True:
         img=Image.fromarray(data)
         img.save(f'{ii}.png')
         ii+=1
+        data=cv2.cvtColor(data,cv2.COLOR_BGR2RGB)
         cv2.imshow("Game",data)
         cv2.waitKey(1)
         lastFrame=time()
